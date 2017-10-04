@@ -15,6 +15,8 @@ import sg.edu.nus.iss.vmcs.store.StoreItem;
 import sg.edu.nus.iss.vmcs.system.MainController;
 import sg.edu.nus.iss.vmcs.util.VMCSException;
 
+import sg.edu.nus.iss.vmcs.store.Iterator;
+
 /**
  * This control object manages the giving of change to the Customer.
  * @author Team SE16T5E
@@ -90,14 +92,24 @@ public class ChangeGiver {
 		boolean isAnyDenoEmpty=false;
 		MainController mainCtrl=txCtrl.getMainController();
 		StoreController storeCtrl=mainCtrl.getStoreController();
-		StoreItem[] cashStoreItems=storeCtrl.getStore(Store.CASH).getItems();
-		for(int i=0;i<cashStoreItems.length;i++){
+		Iterator cashStoreItems=storeCtrl.getStore(Store.CASH).getIterator();
+		cashStoreItems.reset();
+		while(cashStoreItems.hasNext())
+		{
+			StoreItem storeItem=cashStoreItems.getCurrent();
+			CashStoreItem cashStoreItem=(CashStoreItem)storeItem;
+			int quantity=cashStoreItem.getQuantity();
+			if(quantity==0)
+				isAnyDenoEmpty=true;
+			cashStoreItems.next();
+		}
+		/*for(int i=0;i<cashStoreItems.length;i++){
 			StoreItem storeItem=cashStoreItems[i];
 			CashStoreItem cashStoreItem=(CashStoreItem)storeItem;
 			int quantity=cashStoreItem.getQuantity();
 			if(quantity==0)
 				isAnyDenoEmpty=true;
-		}
+		}*/
 		custPanel.displayChangeStatus(isAnyDenoEmpty);
 	}
 }//End of class ChangeGiver

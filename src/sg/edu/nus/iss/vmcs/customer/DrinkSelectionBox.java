@@ -20,6 +20,8 @@ import sg.edu.nus.iss.vmcs.store.StoreItem;
 import sg.edu.nus.iss.vmcs.store.StoreObject;
 import sg.edu.nus.iss.vmcs.system.MainController;
 
+import sg.edu.nus.iss.vmcs.store.Iterator;
+
 /**
  * This interface object is part of the Customer Panel&#46; It is used by the Customer to select a drink.
  * @author Team SE16T5E
@@ -40,12 +42,31 @@ public class DrinkSelectionBox extends Panel{
 		MainController mainCtrl=txCtrl.getMainController();
 		StoreController storeCtrl=mainCtrl.getStoreController();
 		int drinkStoreSize=storeCtrl.getStoreSize(Store.DRINK);
-		StoreItem[] drinkStoreItems=storeCtrl.getStore(Store.DRINK).getItems();
+		Iterator drinkStoreItems=storeCtrl.getStore(Store.DRINK).getIterator();
 		
 		drinkSelectionItems=new DrinkSelectionItem[drinkStoreSize];
 		
 		setLayout(new GridBagLayout());
-		for(int i=0;i<drinkStoreItems.length;i++){
+		drinkStoreItems.reset();
+		int i=0;
+		while(drinkStoreItems.hasNext())
+		{
+			StoreItem storeItem=drinkStoreItems.getCurrent();
+			DrinksStoreItem drinksStoreItem=(DrinksStoreItem)storeItem;
+			StoreObject storeObject=drinksStoreItem.getContent();
+			DrinksBrand drinksBrand=(DrinksBrand)storeObject;
+			String drinksName=drinksBrand.getName();
+			int drinksPrice=drinksBrand.getPrice();
+			int drinksQuantity=drinksStoreItem.getQuantity();
+			drinkSelectionItems[i]=new DrinkSelectionItem(i,drinksName,drinksPrice,drinksQuantity,true,false);
+			drinkSelectionItems[i].addListener(new DrinkSelectionListener(txCtrl,i));
+			add(drinkSelectionItems[i],new GridBagConstraints(0,i,1,1,1.0,0.0,
+				    GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,
+				    new Insets(5,0,0,0),10,0));  
+			i+=1;
+			drinkStoreItems.next();
+		}
+		/*for(int i=0;i<drinkStoreItems.length;i++){
 			StoreItem storeItem=drinkStoreItems[i];
 			DrinksStoreItem drinksStoreItem=(DrinksStoreItem)storeItem;
 			StoreObject storeObject=drinksStoreItem.getContent();
@@ -58,7 +79,7 @@ public class DrinkSelectionBox extends Panel{
 			add(drinkSelectionItems[i],new GridBagConstraints(0,i,1,1,1.0,0.0,
 				    GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,
 				    new Insets(5,0,0,0),10,0));  
-		}
+		}*/
 	}
 	
 	/**

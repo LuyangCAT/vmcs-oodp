@@ -24,7 +24,7 @@ package sg.edu.nus.iss.vmcs.store;
  * @version 3.0 5/07/2003
  * @author Olivo Miotto, Pang Ping Li
  */
-public abstract class Store {
+public abstract class Store implements StoreItemContainer{
 	/**This constant attribute represent Cash*/
 	public final static int CASH  = 1;
 	/**This constant attribute represnet Drink*/
@@ -57,14 +57,23 @@ public abstract class Store {
 		size = sz;
 		items = new StoreItem[size];
 	}
+	
+	/**
+	 * This method returns the {@link StoreItem} corresponding to the index entered.
+	 * @return the array of {@link StoreItem}.
+	 */
+	@Override
+	public Iterator getIterator() {
+		return new StoreItemIterator(items);
+	}
 
 	/**
 	 * This method returns the {@link StoreItem} corresponding to the index entered.
 	 * @return the array of {@link StoreItem}.
 	 */
-	public StoreItem[] getItems() {
+	/*public StoreItem[] getItems() {
 		return items;
-	}
+	}*/
 
 	/**
 	 * This method adds {@link StoreItem} into the store.

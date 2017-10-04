@@ -8,6 +8,8 @@
 package sg.edu.nus.iss.vmcs.maintenance;
 
 import java.awt.Frame;
+import java.util.Observable;
+import java.util.Observer;
 
 import sg.edu.nus.iss.vmcs.customer.CustomerPanel;
 import sg.edu.nus.iss.vmcs.machinery.MachineryController;
@@ -21,13 +23,16 @@ import sg.edu.nus.iss.vmcs.system.SimulatorControlPanel;
 import sg.edu.nus.iss.vmcs.util.MessageDialog;
 import sg.edu.nus.iss.vmcs.util.VMCSException;
 
+import sg.edu.nus.iss.vmcs.store.Iterator;
+import sg.edu.nus.iss.vmcs.store.StoreItem;
+
 /**
  * This control object handles the system maintenance use case.
  *
  * @version 3.0 5/07/2003
  * @author Olivo Miotto, Pang Ping Li
  */
-public class MaintenanceController {
+public class MaintenanceController implements Observer{
 	private MainController mCtrl;
 	private MaintenancePanel mpanel;
 	private AccessManager am;
@@ -39,6 +44,8 @@ public class MaintenanceController {
 	public MaintenanceController(MainController mctrl) {
 		mCtrl = mctrl;
 		am = new AccessManager(this);
+		addToDrinkObservable(mCtrl.getStoreController().getStoreItems(Store.DRINK));
+		addToCoinObservable(mCtrl.getStoreController().getStoreItems(Store.CASH));
 	}
 
 	/**
@@ -248,5 +255,58 @@ public class MaintenanceController {
 	public void closeDown() {
 		if (mpanel != null)
 			mpanel.closeDown();
+	}
+	
+	/**
+	 * This method adds drinks to the observer list
+	 */
+	private void addToDrinkObservable(Iterator storeItems){
+		storeItems.reset();
+		while(storeItems.hasNext())
+		{
+			storeItems.getCurrent().addObserver(this);
+			storeItems.next();
+		}
+		
+	}
+
+	/**
+	 * This method adds coins to the observer list
+	 */	
+	private void addToCoinObservable(Iterator storeItems){
+		storeItems.reset();
+		while(storeItems.hasNext())
+		{
+			storeItems.getCurrent().addObserver(this);
+			storeItems.next();
+		}
+	}
+	
+	/**
+	 * Implementing Observer pattern
+	 * 
+	 * This method is called whenever the observed item is changed
+	 * 
+	 */	
+	@Override
+	public void update(Observable storeItem, Object obj) {
+		try {
+			StoreItem var = (StoreItem) storeItem;
+			if(var instanceof DrinksStoreItem){
+				if(mpanel != null){
+					System.out.println("Maintenance Observer called - drink: "+var.getContent().getName()+" quantity changed to: "+var.getQuantity());
+					mpanel.updateCurrentQtyDisplay(Store.DRINK, var.getQuantity());
+				}
+			}
+			else{
+				if(mpanel != null){
+					System.out.println("Maintenance Observer called - coins: "+var.getContent().getName()+" quantity changed to: "+var.getQuantity());
+					mpanel.updateCurrentQtyDisplay(Store.CASH, var.getQuantity());
+				}
+			}		
+		} catch (VMCSException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 }//End of class MaintenanceController

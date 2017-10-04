@@ -11,13 +11,17 @@ import sg.edu.nus.iss.vmcs.system.*;
 import sg.edu.nus.iss.vmcs.util.*;
 import sg.edu.nus.iss.vmcs.store.*;
 
+import java.util.Collection;
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  * This object controls the Change State use case.
  *
  * @version 3.0 5/07/2003
  * @author Olivo Miotto, Pang Ping Li
  */
-public class MachineryController {
+public class MachineryController implements Observer {
 	/**This attribute reference to the MainController*/
 	public MainController mainCtrl;
 	/**This attribute reference to the StoreController*/
@@ -33,6 +37,8 @@ public class MachineryController {
 	public MachineryController(MainController mctrl) {
 		mainCtrl = mctrl;
 		storeCtrl = mctrl.getStoreController();
+		addToDrinkObservable(storeCtrl.getStoreItems(Store.DRINK));
+		addToCoinObservable(storeCtrl.getStoreItems(Store.CASH));
 	}
 
 	/**
@@ -203,5 +209,54 @@ public class MachineryController {
 		if(ml!=null){
 			ml.refresh();
 		}
+	}
+	
+	/**
+	 * This method adds drinks to the observer list
+	 */
+	private void addToDrinkObservable(Iterator storeItems){
+		storeItems.reset();
+		while(storeItems.hasNext())
+		{
+			storeItems.getCurrent().addObserver(this);
+			storeItems.next();
+		}
+			
+	}
+	
+	/**
+	 * This method adds coins to the observer list
+	 */
+	private void addToCoinObservable(Iterator storeItems){
+		storeItems.reset();
+		while(storeItems.hasNext())
+		{
+			storeItems.getCurrent().addObserver(this);
+			storeItems.next();
+		}
+		
+	}
+
+	/**
+	 * Implementing Observer pattern
+	 * 
+	 * This method is called whenever the observed item is changed
+	 * 
+	 */	
+	@Override
+	public void update(Observable storeItem, Object obj) {
+		StoreItem var = (StoreItem) storeItem;
+		if(var instanceof DrinksStoreItem){
+			if(ml != null){
+				System.out.println("Machinery Observer called - drinks: "+var.getContent().getName()+" quantity changed to: "+var.getQuantity());
+				ml.getDrinksStoreDisplay().update();
+			}
+		}
+		else{
+			if(ml != null){
+				System.out.println("Machinery Observer called - coin: "+var.getContent().getName()+" quantity changed to: "+var.getQuantity());
+				ml.getCashStoreDisplay().update();
+			}
+		}		
 	}
 }//End of class MachineryController
