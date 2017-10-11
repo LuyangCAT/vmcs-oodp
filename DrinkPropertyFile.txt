@@ -1,5 +1,5 @@
 #
-#Wed Oct 04 17:21:01 SGT 2017
+#Mon Oct 09 17:30:56 SGT 2017
 Name6=Soya Bean
 Name5=Coca-Cola
 Name4=Soya Bean
@@ -10,7 +10,7 @@ NumOfItems=6
 Quantity6=4
 Quantity5=0
 Quantity4=4
-Quantity3=7
+Quantity3=6
 Quantity2=8
 Quantity1=1
 Price6=90
