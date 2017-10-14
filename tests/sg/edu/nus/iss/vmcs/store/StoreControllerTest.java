@@ -43,9 +43,14 @@ public class StoreControllerTest extends TestCase{
 	
 	@Test
 	public void testInitialize() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
+		
 		
 		//Act initialize
 		storeController.initialize();		
@@ -59,9 +64,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testInitializeStores() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		
 		//Act initialize indirect Act initializeStores
 		storeController.initialize();
@@ -89,9 +98,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testInitializeDrinkStore() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		
 		//Act initialize indirect Act initializeDrinkStore
 		storeController.initialize();
@@ -109,9 +122,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testInitializeCashStore() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		
 		//Act initialize indirect Act initializeCashStore
 		storeController.initialize();
@@ -128,10 +145,14 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testStoreCoin() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
 		
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
@@ -150,10 +171,14 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testGetStoreSize() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
 		
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		//Initializing the Store
 		storeController.initialize();
 		
@@ -182,10 +207,14 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testGetStoreItems() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
 		
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		
 		//Act getStoreItems
@@ -207,9 +236,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testChangeStoreQty() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
 		int storeSize=cashStore.getStoreSize();
@@ -237,9 +270,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testGetStoreItem() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
 		int storeSize=cashStore.getStoreSize();
@@ -261,9 +298,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testSetPrice() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		
 	    DrinksStore drinksStore=(DrinksStore)storeController.getStore(Store.DRINK);
@@ -282,9 +323,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testGetTotalCash() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
 		//Act getTotalCash
@@ -302,9 +347,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testTransferAll() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
 		//Act transferAll
@@ -329,9 +378,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testCloseDown() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		int cashStoreSize1=storeController.getStoreSize(Store.CASH);
 		int drinksStoreSize1=storeController.getStoreSize(Store.DRINK);
@@ -347,9 +400,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testDispenseDrink(int idx) throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		DrinksStore drinksStore=(DrinksStore)storeController.getStore(Store.DRINK);
 		int storeSize=drinksStore.getStoreSize();
@@ -368,9 +425,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testGetStore() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		//Act getStore
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
@@ -382,9 +443,13 @@ public class StoreControllerTest extends TestCase{
 
 	@Test
 	public void testGiveChange() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		StoreController storeController=mainCtrl.getStoreController();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
 		int storeSize=cashStore.getStoreSize();

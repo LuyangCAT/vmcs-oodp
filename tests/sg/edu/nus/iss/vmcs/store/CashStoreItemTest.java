@@ -34,10 +34,13 @@ public class CashStoreItemTest extends TestCase{
 	
 	@Test
 	public void testSetGetContent() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
-		mainCtrl.initialize();
-		StoreController storeController=mainCtrl.getStoreController();
+		//MainController mainCtrl=new MainController(propertyFilename);
+		//mainCtrl.initialize();
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
+
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
 		int storeSize=cashStore.getStoreSize();
 		for(int i=0;i<storeSize;i++){
@@ -54,10 +57,16 @@ public class CashStoreItemTest extends TestCase{
 
 	@Test
 	public void testSetGetQuantity() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
+		storeController.initialize();
+		
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
 		StoreController storeController=mainCtrl.getStoreController();
-		storeController.initialize();
+		storeController.initialize();*/
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
 		int storeSize=cashStore.getStoreSize();
 		for(int i=0;i<storeSize;i++){
@@ -76,10 +85,16 @@ public class CashStoreItemTest extends TestCase{
 
 	@Test
 	public void testStore() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
 		StoreController storeController=mainCtrl.getStoreController();
+		storeController.initialize();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
+		
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
 		int storeSize=cashStore.getStoreSize();
 		for(int i=0;i<storeSize;i++){
@@ -96,10 +111,16 @@ public class CashStoreItemTest extends TestCase{
 	
 	@Test
 	public void testDecrement() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
 		StoreController storeController=mainCtrl.getStoreController();
+		storeController.initialize();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
+		
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
 		int storeSize=cashStore.getStoreSize();
 		for(int i=0;i<storeSize;i++){
@@ -119,10 +140,16 @@ public class CashStoreItemTest extends TestCase{
 
 	@Test
 	public void testIncrement() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
 		StoreController storeController=mainCtrl.getStoreController();
 		storeController.initialize();
+		*/
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
+		storeController.initialize();
+		
 		CashStore cashStore=(CashStore)storeController.getStore(Store.CASH);
 		int storeSize=cashStore.getStoreSize();
 		for(int i=0;i<storeSize;i++){

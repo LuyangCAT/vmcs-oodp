@@ -34,9 +34,13 @@ public class DrinksStoreItemTest extends TestCase{
 	
 	@Test
 	public void testSetGetContent() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
 		StoreController storeController=mainCtrl.getStoreController();
+		storeController.initialize();*/
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		DrinksStore drinkStore=(DrinksStore)storeController.getStore(Store.DRINK);
 		int storeSize=drinkStore.getStoreSize();
@@ -55,9 +59,14 @@ public class DrinksStoreItemTest extends TestCase{
 
 	@Test
 	public void testSetGetQuantity() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
 		StoreController storeController=mainCtrl.getStoreController();
+		storeController.initialize();*/
+		
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		DrinksStore drinksStore=(DrinksStore)storeController.getStore(Store.DRINK);
 		int storeSize=drinksStore.getStoreSize();
@@ -77,9 +86,13 @@ public class DrinksStoreItemTest extends TestCase{
 
 	@Test
 	public void testStore() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
 		StoreController storeController=mainCtrl.getStoreController();
+		storeController.initialize();*/
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		DrinksStore drinksStore=(DrinksStore)storeController.getStore(Store.DRINK);
 		int storeSize=drinksStore.getStoreSize();
@@ -97,9 +110,13 @@ public class DrinksStoreItemTest extends TestCase{
 	
 	@Test
 	public void testDecrement() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
 		StoreController storeController=mainCtrl.getStoreController();
+		storeController.initialize();*/
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		DrinksStore drinksStore=(DrinksStore)storeController.getStore(Store.DRINK);
 		int storeSize=drinksStore.getStoreSize();
@@ -120,9 +137,13 @@ public class DrinksStoreItemTest extends TestCase{
 
 	@Test
 	public void testIncrement() throws Exception{
-		MainController mainCtrl=new MainController(propertyFilename);
+		/*MainController mainCtrl=new MainController(propertyFilename);
 		mainCtrl.initialize();
 		StoreController storeController=mainCtrl.getStoreController();
+		storeController.initialize();*/
+		MainController.getInstance().initializeProperty(propertyFilename);
+		MainController.getInstance().initialize();
+		StoreController storeController=MainController.getInstance().getStoreController();
 		storeController.initialize();
 		DrinksStore drinksStore=(DrinksStore)storeController.getStore(Store.DRINK);
 		int storeSize=drinksStore.getStoreSize();
