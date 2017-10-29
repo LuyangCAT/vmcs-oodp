@@ -25,6 +25,8 @@ public class Environment {
 	public final static String CASH_PROP_FILE = "cashFile";
 	/**This constant attribute denotes the password string*/
 	public final static String PASSWORD = "password";
+	/**This constant attribute denotes the type to load*/ 
+	public final static String TYPE = "type";
 
 	private static Properties prop;
 
@@ -71,5 +73,13 @@ public class Environment {
 	 */
 	public static String getPassword() {
 		return prop.getProperty(PASSWORD);
+	}
+	
+	/**
+	 * if you put type in the property file, the type is obtained here.
+	 * @return the type
+	 */
+	public static String getType() {
+		return prop.getProperty(TYPE);
 	}
 }//End of class Environment

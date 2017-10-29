@@ -38,6 +38,7 @@ public class CashPropertyLoader extends FilePropertyLoader {
 	 * @return StoreItem the store item of the given index.
 	 */
 	public StoreItem getItem (int index) {
+		System.out.print("Inside CashPropertyLoader: getItem(" + String.valueOf(index) +")\n");
 		int idx = index + 1;
 		Coin coin = new Coin();
 
@@ -67,6 +68,7 @@ public class CashPropertyLoader extends FilePropertyLoader {
 	 * @param cashItem the cash store item.
 	 */
 	public void setItem(int index, StoreItem cashItem) {
+		System.out.print("Inside CashPropertyLoader: setItem(" + String.valueOf(index) + ", " + cashItem.toString() + ")\n");
 		int idx = index + 1;
 
 		CashStoreItem item = (CashStoreItem) cashItem;

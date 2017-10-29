@@ -69,6 +69,7 @@ public abstract class FilePropertyLoader implements PropertyLoader {
 	 * @return the number of items.
 	 */
 	public int getNumOfItems() {
+		System.out.print("Inside FilePropertyLoader: getNumOfItems()\n");
 		String nm = prop.getProperty(PROP_NUM_ITEMS);
 		int nmi;
 		nmi = Integer.parseInt(nm);
@@ -80,6 +81,7 @@ public abstract class FilePropertyLoader implements PropertyLoader {
 	 * @param vl the number of items.
 	 */
 	public void setNumOfItems(int vl) {
+		System.out.print("Inside FilePropertyLoader: setNumOfItems(" + String.valueOf(vl) + ")\n");
 		prop.setProperty(PROP_NUM_ITEMS, String.valueOf(vl));
 	}
 	
@@ -103,6 +105,7 @@ public abstract class FilePropertyLoader implements PropertyLoader {
 	 * @return the value of the given key.
 	 */
 	public String getValue(String key) {
+		System.out.print("Inside FilePropertyLoader: getValue(" + key + ")\n");
 		return prop.getProperty(key);
 	}
 
@@ -112,6 +115,7 @@ public abstract class FilePropertyLoader implements PropertyLoader {
 	 * @param value the value.
 	 */
 	public void setValue(String key, String value) {
+		System.out.print("Inside FilePropertyLoader: setValue(" + key + ", " + value + ")\n");
 		prop.setProperty(key, value);
 	}
 }//End of class FilePropertyLoader

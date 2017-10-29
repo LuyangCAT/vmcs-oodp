@@ -1,23 +1,23 @@
 #
-#Sat Oct 14 22:43:26 SGT 2017
-Name5=$1
-Name4=50C
-Name3=20C
-Name2=10C
-Name1=5C
-Value5=100
-Value4=50
-NumOfItems=5
+#Sun Oct 29 20:15:24 SRET 2017
 Value3=20
-Value2=10
+Value4=50
 Value1=5
-Quantity5=1
-Quantity4=1
-Quantity3=10
-Quantity2=5
+Value2=10
+Value5=100
+Name3=20C
 Quantity1=10
+Name4=50C
+Quantity2=5
+Name5=$1
 Weight5=42.2
 Weight4=35.0
 Weight3=18.5
 Weight2=10.9
 Weight1=7.1
+Quantity5=1
+Name1=5C
+Quantity3=10
+Name2=10C
+NumOfItems=5
+Quantity4=1
