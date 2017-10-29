@@ -105,7 +105,6 @@ public abstract class FilePropertyLoader implements PropertyLoader {
 	 * @return the value of the given key.
 	 */
 	public String getValue(String key) {
-		System.out.print("Inside FilePropertyLoader: getValue(" + key + ")\n");
 		return prop.getProperty(key);
 	}
 
@@ -115,7 +114,6 @@ public abstract class FilePropertyLoader implements PropertyLoader {
 	 * @param value the value.
 	 */
 	public void setValue(String key, String value) {
-		System.out.print("Inside FilePropertyLoader: setValue(" + key + ", " + value + ")\n");
 		prop.setProperty(key, value);
 	}
 }//End of class FilePropertyLoader

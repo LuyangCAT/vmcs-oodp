@@ -61,12 +61,10 @@ public abstract class DBPropertyLoader implements PropertyLoader {
 	abstract public void setItem(int index, StoreItem item) ;
 	
 	public String getValue(String key) {
-		System.out.print("Inside DBPropertyLoader: getValue(" + key + ")\n");
 		return prop.getProperty(key);
 	}
 	
 	public void setValue(String key, String value) {
-		System.out.print("Inside DBPropertyLoader: setValue(" + key + ", " + value + ")\n");
 		prop.setProperty(key, value);
 	}
 }
