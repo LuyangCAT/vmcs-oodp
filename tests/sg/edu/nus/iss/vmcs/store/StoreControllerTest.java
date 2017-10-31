@@ -6,13 +6,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import sg.edu.nus.iss.vmcs.system.CashDBLoader;
 import sg.edu.nus.iss.vmcs.system.CashPropertyLoader;
+import sg.edu.nus.iss.vmcs.system.DrinkDBLoader;
 import sg.edu.nus.iss.vmcs.system.DrinkPropertyLoader;
 import sg.edu.nus.iss.vmcs.system.Environment;
 import sg.edu.nus.iss.vmcs.system.MainController;
 
 public class StoreControllerTest extends TestCase{
 	private String propertyFilename=System.getProperty("propertyFilename");
+	private StoreController storeController;
 	
 	@Before
 	public void setup() throws Exception{
@@ -26,14 +29,16 @@ public class StoreControllerTest extends TestCase{
 	@Test
 	public void testStoreControllerConstructor() throws Exception{
 		Environment.initialize(propertyFilename);
-		CashPropertyLoader cashLoader =
-			new CashPropertyLoader(Environment.getCashPropFile());
-		DrinkPropertyLoader drinksLoader =
-			new DrinkPropertyLoader(Environment.getDrinkPropFile());
-		cashLoader.initialize();
-		drinksLoader.initialize();
-		//Act
-		StoreController storeController=new StoreController(cashLoader, drinksLoader);
+		String type = Environment.getType();
+		if (type.equals("txt")) {
+		    CashProperty cashProperty = new CashProperty(new CashPropertyLoader(Environment.getCashPropFile()));
+		    DrinkProperty drinkProperty = new DrinkProperty(new DrinkPropertyLoader(Environment.getDrinkPropFile()));
+		    storeController= new StoreController(cashProperty, drinkProperty);
+		} else {
+			CashProperty cashProperty = new CashProperty(new CashDBLoader(Environment.getCashPropFile()));
+		    DrinkProperty drinkProperty = new DrinkProperty(new DrinkDBLoader(Environment.getDrinkPropFile()));
+			storeController = new StoreController(cashProperty, drinkProperty);
+		}
 		storeController.initialize();
 		//Assert
 		assertNotNull(storeController);
