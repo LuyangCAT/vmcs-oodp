@@ -14,7 +14,6 @@ public class CashDBLoader extends DBPropertyLoader {
 		super(filen);
 	}
 
-	@Override
 	public StoreItem getItem (int index) {
 		System.out.print("Inside CashDBLoader: getItem(" + String.valueOf(index) +")\n");
 		int idx = index + 1;
@@ -40,9 +39,8 @@ public class CashDBLoader extends DBPropertyLoader {
 		return item;
 	}
 
-	@Override
 	public void setItem(int index, StoreItem cashItem) {
-		System.out.print("Inside CashDBLoader: setItem(" + String.valueOf(index) + ", " + cashItem.toString() + ")\n");
+		System.out.print("Inside CashDBLoader: setItem(" + String.valueOf(index) + ", cashStoreItem)\n");
 		int idx = index + 1;
 
 		CashStoreItem item = (CashStoreItem) cashItem;
@@ -60,30 +58,4 @@ public class CashDBLoader extends DBPropertyLoader {
 		itn = new String(QUANTITY_LABEL + idx);
 		setValue(itn, String.valueOf(item.getQuantity()));
 	}
-
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		return super.clone();
-	}
-
-	@Override
-	public boolean equals(Object arg0) {
-		return super.equals(arg0);
-	}
-
-	@Override
-	protected void finalize() throws Throwable {
-		super.finalize();
-	}
-
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	@Override
-	public String toString() {
-		return super.toString();
-	}
-
 }

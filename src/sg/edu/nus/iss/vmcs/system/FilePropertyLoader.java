@@ -40,6 +40,11 @@ public abstract class FilePropertyLoader implements PropertyLoader {
 	 */
 	public FilePropertyLoader(String fileName) {
 		this.fileName = fileName;
+		try {
+			initialize();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -69,7 +74,7 @@ public abstract class FilePropertyLoader implements PropertyLoader {
 	 * @return the number of items.
 	 */
 	public int getNumOfItems() {
-		System.out.print("Inside FilePropertyLoader: getNumOfItems()\n");
+		System.out.print("Inside FilePropertyLoader: getNumOfItems()\n\n");
 		String nm = prop.getProperty(PROP_NUM_ITEMS);
 		int nmi;
 		nmi = Integer.parseInt(nm);
@@ -81,7 +86,7 @@ public abstract class FilePropertyLoader implements PropertyLoader {
 	 * @param vl the number of items.
 	 */
 	public void setNumOfItems(int vl) {
-		System.out.print("Inside FilePropertyLoader: setNumOfItems(" + String.valueOf(vl) + ")\n");
+		System.out.print("Inside FilePropertyLoader: setNumOfItems(" + String.valueOf(vl) + ")\n\n");
 		prop.setProperty(PROP_NUM_ITEMS, String.valueOf(vl));
 	}
 	

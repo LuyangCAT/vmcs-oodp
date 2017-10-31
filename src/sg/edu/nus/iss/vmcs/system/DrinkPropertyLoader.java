@@ -64,7 +64,7 @@ public class DrinkPropertyLoader extends FilePropertyLoader {
 	 * @param drinksItem the store item of the given index.
 	 */
 	public void setItem(int index, StoreItem drinksItem) {
-		System.out.print("Inside DrinkPropertyLoader: setItem(" + String.valueOf(index) + ", " + drinksItem.toString() + ")\n");
+		System.out.print("Inside DrinkPropertyLoader: setItem(" + String.valueOf(index) + ", drinksStoreItem)\n");
 		int idx = index + 1;
 
 		DrinksStoreItem item = (DrinksStoreItem) drinksItem;

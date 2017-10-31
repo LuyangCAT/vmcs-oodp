@@ -140,4 +140,16 @@ public abstract class Store implements StoreItemContainer{
 	public int getStoreSize() {
 		return size;
 	}
+	
+	public int findCashStoreIndex(Coin c) {
+		int size = getStoreSize();
+		for (int i = 0; i < size; i++) {
+			StoreItem item = (CashStoreItem) getStoreItem(i);
+			Coin current = (Coin) item.getContent();
+			if (current.getWeight() == c.getWeight()) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }//End of class Store

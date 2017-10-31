@@ -68,7 +68,7 @@ public class CashPropertyLoader extends FilePropertyLoader {
 	 * @param cashItem the cash store item.
 	 */
 	public void setItem(int index, StoreItem cashItem) {
-		System.out.print("Inside CashPropertyLoader: setItem(" + String.valueOf(index) + ", " + cashItem.toString() + ")\n");
+		System.out.print("Inside CashPropertyLoader: setItem(" + String.valueOf(index) + ", cashStoreItem)\n");
 		int idx = index + 1;
 
 		CashStoreItem item = (CashStoreItem) cashItem;

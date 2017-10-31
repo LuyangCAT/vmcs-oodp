@@ -14,7 +14,6 @@ public class DrinkDBLoader extends DBPropertyLoader {
 		super(filen);
 	}
 
-	@Override
 	public StoreItem getItem(int index) {
 		System.out.print("Inside DrinkDBLoader: getItem(" + String.valueOf(index) + ")\n");
 		int idx = index + 1;
@@ -37,9 +36,8 @@ public class DrinkDBLoader extends DBPropertyLoader {
 
 	}
 
-	@Override
 	public void setItem(int index, StoreItem drinksItem) {
-		System.out.print("Inside DrinkDBLoader: setItem(" + String.valueOf(index) + ", " + drinksItem.toString() + ")\n");
+		System.out.print("Inside DrinkDBLoader: setItem(" + String.valueOf(index) + ", drinksStoreItem)\n");
 		int idx = index + 1;
 
 		DrinksStoreItem item = (DrinksStoreItem) drinksItem;
@@ -52,32 +50,5 @@ public class DrinkDBLoader extends DBPropertyLoader {
 
 		itn = new String(QUANTITY_LABEL + idx);
 		setValue(itn, String.valueOf(item.getQuantity()));
-
 	}
-	
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		return super.clone();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
-	}
-
-	@Override
-	protected void finalize() throws Throwable {
-		super.finalize();
-	}
-
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	@Override
-	public String toString() {
-		return super.toString();
-	}
-
 }

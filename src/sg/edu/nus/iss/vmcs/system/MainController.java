@@ -12,6 +12,8 @@ import java.io.IOException;
 import sg.edu.nus.iss.vmcs.customer.TransactionController;
 import sg.edu.nus.iss.vmcs.machinery.MachineryController;
 import sg.edu.nus.iss.vmcs.maintenance.MaintenanceController;
+import sg.edu.nus.iss.vmcs.store.CashProperty;
+import sg.edu.nus.iss.vmcs.store.DrinkProperty;
 import sg.edu.nus.iss.vmcs.store.StoreController;
 import sg.edu.nus.iss.vmcs.util.VMCSException;
 
@@ -95,20 +97,14 @@ public class MainController {
 			Environment.initialize(propertyFile);
 			String type = Environment.getType();
 			if (type.equals("txt")) {
-			    CashPropertyLoader cashLoader =
-			    		new CashPropertyLoader(Environment.getCashPropFile());
-			    DrinkPropertyLoader drinksLoader =
-			    		new DrinkPropertyLoader(Environment.getDrinkPropFile());
-			    cashLoader.initialize();
-			    drinksLoader.initialize();
-			    storeCtrl = new StoreController(cashLoader, drinksLoader);
+			    CashProperty cashProperty = new CashProperty(new CashPropertyLoader(Environment.getCashPropFile()));
+			    DrinkProperty drinkProperty = new DrinkProperty(new DrinkPropertyLoader(Environment.getDrinkPropFile()));
+			    storeCtrl = new StoreController(cashProperty, drinkProperty);
 			} else {
-				CashDBLoader cashLoader = new CashDBLoader(Environment.getCashPropFile());
-				DrinkDBLoader drinksLoader = new DrinkDBLoader(Environment.getDrinkPropFile());
-				cashLoader.initialize();
-			    drinksLoader.initialize();
-				storeCtrl = new StoreController(cashLoader, drinksLoader);
-			}	
+				CashProperty cashProperty = new CashProperty(new CashDBLoader(Environment.getCashPropFile()));
+			    DrinkProperty drinkProperty = new DrinkProperty(new DrinkDBLoader(Environment.getDrinkPropFile()));
+				storeCtrl = new StoreController(cashProperty, drinkProperty);
+			}
 			storeCtrl.initialize();
 			simulatorCtrl = new SimulationController(this);
 			machineryCtrl = new MachineryController(this);

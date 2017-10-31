@@ -48,7 +48,6 @@ public class ButtonItem extends Panel {
 
 		this.add(btn);
 		this.add(value);
-		System.out.println("Test: " +value);
 	}
 
 	/**
